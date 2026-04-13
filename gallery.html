@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Our Moments 🌸</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pink-deep: #c2185b;
+  --pink-mid: #e91e8c;
+  --pink-soft: #f48fb1;
+  --pink-blush: #fce4ec;
+  --pink-pale: #fff0f6;
+  --gold: #d4a017;
+  --gold-light: #f5d76e;
+  --white: #fffcfe;
+  --dark: #2d0a1a;
+}
+
+body {
+  background: var(--white);
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--dark);
+  overflow-x: hidden;
+}
+
+/* ==============================
+   MEMORIES SECTION
+============================== */
+.memories-section {
+  position: relative;
+  background: linear-gradient(180deg, #fff0f6 0%, #fce4ec 40%, #fff0f6 100%);
+  padding: 90px 0 100px;
+  overflow: hidden;
+}
+
+.memories-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 40% at 10% 30%, rgba(233,30,140,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 90% 70%, rgba(194,24,91,0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* Section Header */
+.mem-header {
+  text-align: center;
+  padding: 0 24px;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.mem-label {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--pink-mid);
+  font-weight: 300;
+  margin-bottom: 14px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.7s ease;
+}
+
+.mem-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 8vw, 44px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--pink-deep);
+  line-height: 1.15;
+  margin-bottom: 14px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.7s ease 0.15s;
+}
+
+.mem-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(14px, 3.5vw, 17px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(44,12,26,0.55);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: all 0.7s ease 0.28s;
+}
+
+.mem-header.is-visible .mem-label,
+.mem-header.is-visible .mem-title,
+.mem-header.is-visible .mem-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mem-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 220px;
+  margin: 20px auto 0;
+  opacity: 0;
+  transition: opacity 0.7s ease 0.4s;
+}
+.mem-header.is-visible .mem-divider { opacity: 1; }
+
+.mem-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pink-mid), transparent);
+}
+
+.mem-divider-icon { color: var(--pink-mid); font-size: 14px; }
+
+/* ==============================
+   MAIN FEATURED CAROUSEL
+============================== */
+.carousel-wrap {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 56px;
+}
+
+.carousel-track-outer {
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.carousel-track-outer:active { cursor: grabbing; }
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 16px 28px 28px;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+/* Each featured card */
+.carousel-card {
+  flex: 0 0 calc(85vw);
+  max-width: 360px;
+  min-width: 260px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 8px 30px rgba(194,24,91,0.12),
+    0 2px 8px rgba(194,24,91,0.06);
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1), box-shadow 0.4s ease;
+  background: #fff;
+}
+
+.carousel-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow:
+    0 20px 50px rgba(194,24,91,0.18),
+    0 6px 16px rgba(194,24,91,0.1);
+}
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--pink-blush), var(--pink-pale));
+}
+
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card:hover .card-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* Placeholder shown when no real image */
+.img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 100%);
+}
+
+.placeholder-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(233,30,140,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.placeholder-text {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--pink-deep);
+  font-weight: 200;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.placeholder-text img {
+  object-fit: cover;
+}
+
+/* Gradient overlay on card image */
+.card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(0deg, rgba(45,10,26,0.85) 0%, rgba(45,10,26,0.4) 60%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Card bottom caption */
+.card-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 24px 20px 20px;
+  z-index: 2;
+}
+
+.card-tag {
+  display: inline-block;
+  background: rgba(233,30,140,0.25);
+  border: 1px solid rgba(233,30,140,0.5);
+  color: #f9b8d4;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 30px;
+  margin-bottom: 8px;
+  font-weight: 200;
+  backdrop-filter: blur(6px);
+}
+
+.card-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(20px, 5.5vw, 26px);
+  color: white;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+
+.card-date {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 100;
+  text-transform: uppercase;
+  margin-top: 5px;
+}
+
+/* Heart badge top-right */
+.card-heart {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  z-index: 3;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.card-heart:hover {
+  transform: scale(1.2);
+  background: rgba(233,30,140,0.4);
+}
+
+/* Carousel Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 0 24px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(194,24,91,0.25);
+  transition: all 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+  cursor: pointer;
+}
+
+.dot.active {
+  width: 24px;
+  border-radius: 6px;
+  background: var(--pink-mid);
+}
+
+/* Prev/Next buttons */
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 0 24px;
+}
+
+.nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(233,30,140,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(194,24,91,0.1);
+  transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
+  color: var(--pink-deep);
+  font-size: 18px;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, var(--pink-deep), var(--pink-mid));
+  color: white;
+  border-color: transparent;
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(194,24,91,0.3);
+}
+
+.nav-btn:active { transform: scale(0.96); }
+
+.nav-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==============================
+   FILM STRIP ROW (Secondary)
+============================== */
+.filmstrip-section {
+  position: relative;
+  z-index: 2;
+  padding: 0 0 10px;
+  margin-bottom: 50px;
+}
+
+.filmstrip-label {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--pink-deep);
+  font-weight: 200;
+  padding: 0 28px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.filmstrip-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(194,24,91,0.3), transparent);
+}
+
+.filmstrip-track {
+  display: flex;
+  gap: 10px;
+  padding: 0 28px 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.filmstrip-track::-webkit-scrollbar { display: none; }
+
+.film-frame {
+  flex: 0 0 120px;
+  height: 150px;
+  border-radius: 14px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+  box-shadow: 0 4px 14px rgba(194,24,91,0.1);
+  background: linear-gradient(160deg, #fce4ec, #f8bbd0);
+}
+
+.film-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.film-frame:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 12px 28px rgba(194,24,91,0.22);
+}
+
+.film-frame:hover img { transform: scale(1.08); }
+
+.film-frame-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(194,24,91,0.4) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.film-frame:hover .film-frame-overlay { opacity: 1; }
+
+.film-placeholder {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 100%);
+  z-index: 0;
+}
+
+/* Expand icon on hover */
+.film-expand {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+  color: var(--pink-deep);
+  font-size: 14px;
+}
+
+.film-frame:hover .film-expand {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* ==============================
+   POLAROID ROW
+============================== */
+.polaroid-section {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+  margin-bottom: 60px;
+}
+
+.polaroid-row {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 20px 0 30px;
+}
+
+.polaroid-row::-webkit-scrollbar { display: none; }
+
+.polaroid {
+  flex: 0 0 180px;
+  scroll-snap-align: center;
+  background: white;
+  padding: 12px 12px 36px;
+  border-radius: 4px;
+  box-shadow:
+    0 6px 20px rgba(194,24,91,0.1),
+    0 1px 4px rgba(0,0,0,0.06);
+  transition: all 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+  cursor: pointer;
+  position: relative;
+}
+
+.polaroid:nth-child(odd) { transform: rotate(-2.5deg); }
+.polaroid:nth-child(even) { transform: rotate(2deg); }
+.polaroid:nth-child(3n) { transform: rotate(-1deg) translateY(6px); }
+
+.polaroid:hover {
+  transform: rotate(0deg) scale(1.06) translateY(-8px) !important;
+  box-shadow:
+    0 20px 40px rgba(194,24,91,0.2),
+    0 4px 12px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+
+.polaroid-img {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--pink-blush), var(--pink-pale));
+  position: relative;
+}
+
+.polaroid-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.polaroid-img-ph {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  z-index: 0;
+}
+
+.polaroid-caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 13px;
+  color: var(--pink-deep);
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.3;
+}
+
+/* Pink tape on top corners */
+.polaroid::before,
+.polaroid::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  width: 32px;
+  height: 14px;
+  background: rgba(244,143,177,0.5);
+  border-radius: 3px;
+  transform: rotate(-3deg);
+}
+
+.polaroid::before { left: 16px; transform: rotate(-5deg); }
+.polaroid::after  { right: 16px; transform: rotate(5deg); }
+
+/* ==============================
+   LIGHTBOX
+============================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(45,10,26,0.95);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-inner {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  transform: scale(0.92);
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.lightbox.open .lightbox-inner { transform: scale(1); }
+
+.lightbox-img-wrap {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--pink-blush), var(--pink-pale));
+  aspect-ratio: 4/5;
+}
+
+.lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lightbox-img-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.lightbox-ph-icon { font-size: 50px; }
+
+.lightbox-ph-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--pink-deep);
+}
+
+.lightbox-caption {
+  margin-top: 20px;
+  text-align: center;
+  padding: 0 16px;
+}
+
+.lightbox-caption-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 26px;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.lightbox-caption-date {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 100;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -18px;
+  right: -6px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--pink-deep);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.lightbox-close:hover { transform: scale(1.1) rotate(90deg); }
+
+.lightbox-nav {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.lightbox-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(233,30,140,0.4);
+  border-color: rgba(233,30,140,0.6);
+  transform: scale(1.1);
+}
+
+.lightbox-nav-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ==============================
+   COUNTER STRIP
+============================== */
+.counter-strip {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: white;
+  border-top: 1px solid rgba(233,30,140,0.1);
+  border-bottom: 1px solid rgba(233,30,140,0.1);
+  margin: 0 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(194,24,91,0.06);
+  position: relative;
+  z-index: 2;
+}
+
+.counter-item {
+  flex: 1;
+  padding: 24px 10px;
+  text-align: center;
+  border-right: 1px solid rgba(233,30,140,0.1);
+}
+
+.counter-item:last-child { border-right: none; }
+
+.counter-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 7vw, 36px);
+  font-weight: 400;
+  color: var(--pink-deep);
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.counter-label {
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(44,12,26,0.45);
+  font-weight: 500;
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<!-- ================================
+     MEMORIES SECTION
+================================ -->
+<section class="memories-section" id="memories">
+
+  <!-- Header -->
+  <div class="mem-header" id="memHeader">
+    <p class="mem-label">Our Story in Pictures</p>
+    <h2 class="mem-title">Every Moment With You<br>Is a Memory I Treasure</h2>
+    <p class="mem-sub">A lifetime of little moments that mean everything</p>
+    <div class="mem-divider">
+      <div class="mem-divider-line"></div>
+      <span class="mem-divider-icon">♡</span>
+      <div class="mem-divider-line"></div>
+    </div>
+  </div>
+
+  <!-- MOMENTS COUNTER -->
+  <div class="counter-strip" style="margin-bottom:56px">
+    <div class="counter-item">
+      <span class="counter-num" data-target="365">0</span>
+      <span class="counter-label">Days Together</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num" data-target="∞">∞</span>
+      <span class="counter-label">Love Given</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num" data-target="1">1</span>
+      <span class="counter-label">Us, Forever</span>
+    </div>
+  </div>
+
+  <!-- MAIN CAROUSEL -->
+  <div class="carousel-wrap">
+    <div class="carousel-track-outer" id="carouselOuter">
+      <div class="carousel-track" id="carouselTrack">
+
+        <!-- CARD 1 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 0)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (11).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Our Favourite</span>
+            <p class="card-title">The Day It All Started</p>
+            <p class="card-date">Our Beginning ✦</p>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 1)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (1).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Together</span>
+            <p class="card-title">Just You & Me</p>
+            <p class="card-date">A Perfect Day ✦</p>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 2)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (23).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Anniversary</span>
+            <p class="card-title">One Year of Love</p>
+            <p class="card-date">February 1st ✦</p>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 3)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (19).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Candid</span>
+            <p class="card-title">You, Unfiltered</p>
+            <p class="card-date">My Favourite View ✦</p>
+          </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 4)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (15).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Birthday</span>
+            <p class="card-title">Happy Birthday, Som Som</p>
+            <p class="card-date">April 14th ✦</p>
+          </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="carousel-card" onclick="openLightbox('carousel', 5)">
+          <div class="card-img-wrap">
+            <img src="memories/memory (13).jpg" alt="moment" />
+            <div class="card-overlay"></div>
+          </div>
+          <div class="card-heart" onclick="event.stopPropagation(); toggleHeart(this)">🤍</div>
+          <div class="card-caption">
+            <span class="card-tag">Memories</span>
+            <p class="card-title">My Beautiful Angel</p>
+            <p class="card-date">Always & Forever ✦</p>
+          </div>
+        </div>
+
+      </div><!-- /track -->
+    </div>
+
+    <!-- Dots -->
+    <div class="carousel-dots" id="carouselDots"></div>
+
+    <!-- Nav buttons -->
+    <div class="carousel-nav">
+      <button class="nav-btn" onclick="carouselPrev()" aria-label="Previous">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="nav-btn" onclick="carouselNext()" aria-label="Next">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- FILM STRIP -->
+  <div class="filmstrip-section">
+    <p class="filmstrip-label">More Moments</p>
+    <div class="filmstrip-track">
+      <div class="film-frame" onclick="openLightbox('film', 0)">
+        <!-- <div class="film-placeholder">🌸</div> -->
+        <img src="memories/memory (33).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 1)">
+        <!-- <div class="film-placeholder">💕</div> -->
+        <img src="memories/memory (31).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 2)">
+        <!-- <div class="film-placeholder">✨</div> -->
+        <img src="memories/memory (27).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 3)">
+        <!-- <div class="film-placeholder">🌺</div> -->
+        <img src="memories/memory (28).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 4)">
+        <!-- <div class="film-placeholder">💖</div> -->
+        <img src="memories/memory (29).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 5)">
+        <!-- <div class="film-placeholder">🎀</div> -->
+        <img src="memories/memory (30).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 6)">
+        <!-- <div class="film-placeholder">🌙</div> -->
+        <img src="memories/memory (32).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 7)">
+        <!-- <div class="film-placeholder">💫</div> -->
+        <img src="memories/memory (34).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 8)">
+        <!-- <div class="film-placeholder">💫</div> -->
+        <img src="memories/memory (2).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 9)">
+        <!-- <div class="film-placeholder">💫</div> -->
+        <img src="memories/memory (3).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 10)">
+        <!-- <div class="film-placeholder">💫</div> -->
+        <img src="memories/memory (4).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+      <div class="film-frame" onclick="openLightbox('film', 11)">
+        <!-- <div class="film-placeholder">💫</div> -->
+        <img src="memories/memory (5).jpg" alt="moment">
+        <!-- <div class="film-frame-overlay"></div> -->
+        <!-- <div class="film-expand">⤢</div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- POLAROID ROW -->
+  <div class="polaroid-section">
+    <div class="polaroid-row">
+      <div class="polaroid" onclick="openLightbox('polaroid', 0)">
+        <div class="polaroid-img">
+          <img src="memories/memory (35).jpg" alt="moment" />
+          <div class="polaroid-img-ph">🌸</div>
+        </div>
+        <p class="polaroid-caption">My Sweet Potato m 🌸</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 1)">
+        <div class="polaroid-img">
+          <img src="memories/memory (25).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💕</div>
+        </div>
+        <p class="polaroid-caption">Baby Oku 💕</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 2)">
+        <div class="polaroid-img">
+          <img src="memories/memory (23).jpg" alt="moment" />
+          <div class="polaroid-img-ph">✨</div>
+        </div>
+        <p class="polaroid-caption">Cutie Patooti m ✨</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 3)">
+        <div class="polaroid-img">
+          <img src="memories/memory (22).jpg" alt="moment" />
+          <div class="polaroid-img-ph">🌺</div>
+        </div>
+        <p class="polaroid-caption">My Angel 🌺</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 4)">
+        <div class="polaroid-img">
+          <img src="memories/memory (16).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 5)">
+        <div class="polaroid-img">
+          <img src="memories/memory (17).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 6)">
+        <div class="polaroid-img">
+          <img src="memories/memory (18).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 7)">
+        <div class="polaroid-img">
+          <img src="memories/memory (20).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 8)">
+        <div class="polaroid-img">
+          <img src="memories/memory (6).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 9)">
+        <div class="polaroid-img">
+          <img src="memories/memory (7).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 10)">
+        <div class="polaroid-img">
+          <img src="memories/memory (12).jpg" alt="moment" />
+          <div class="polaroid-img-ph">💖</div>
+        </div>
+        <p class="polaroid-caption">Akpa Mbooo 💖</p>
+      </div>
+      <div class="polaroid" onclick="openLightbox('polaroid', 11)">
+        <div class="polaroid-img">
+          <img src="memories/memory (9).jpg" alt="moment" />
+          <div class="polaroid-img-ph">🎀</div>
+        </div>
+        <p class="polaroid-caption">Somaga forever 🎀</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOutside(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-img-wrap" id="lbImgWrap">
+      <img id="lbImg" src="" alt="moment" style="display:none;" />
+      <div class="lightbox-img-ph" id="lbPh">
+        <div class="lightbox-ph-icon">🌸</div>
+        <p class="lightbox-ph-text">Your Beautiful Moment</p>
+      </div>
+    </div>
+    <div class="lightbox-caption">
+      <p class="lightbox-caption-title" id="lbTitle">Our Moment</p>
+      <p class="lightbox-caption-date" id="lbDate">A Memory Forever ✦</p>
+    </div>
+    <div class="lightbox-nav">
+      <button class="lightbox-nav-btn" onclick="lbPrev()">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="lightbox-nav-btn" onclick="lbNext()">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA SETS FOR EACH ROW =====
+
+const carouselData = [
+  { title: "The Day It All Started", date: "Our Beginning ✦", img: "memories/memory (11).jpg" },
+  { title: "Just You & Me",           date: "A Perfect Day ✦",   img: "memories/memory (1).jpg" },
+  { title: "One Year of Love",        date: "February 1st ✦",    img: "memories/memory (23).jpg" },
+  { title: "You, Unfiltered",         date: "My Favourite View ✦", img: "memories/memory (19).jpg" },
+  { title: "Happy Birthday, Som Som", date: "April 14th ✦",      img: "memories/memory (15).jpg" },
+  { title: "My Beautiful Angel",      date: "Always & Forever ✦", img: "memories/memory (13).jpg" },
+];
+
+const filmData = [
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (33).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (31).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (27).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (28).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (29).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (30).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (32).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (34).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (2).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (3).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (4).jpg" },
+  { title: "Our Moment", date: "A Memory Forever ✦", img: "memories/memory (5).jpg" },
+];
+
+const polaroidData = [
+  { title: "My Sweet Potato m 🌸",  date: "Always & Forever ✦", img: "memories/memory (35).jpg" },
+  { title: "Baby Oku 💕",            date: "Always & Forever ✦", img: "memories/memory (25).jpg" },
+  { title: "Cutie Patooti m ✨",     date: "Always & Forever ✦", img: "memories/memory (23).jpg" },
+  { title: "My Angel 🌺",            date: "Always & Forever ✦", img: "memories/memory (22).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (16).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (17).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (18).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (20).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (6).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (7).jpg" },
+  { title: "Akpa Mbooo 💖",          date: "Always & Forever ✦", img: "memories/memory (12).jpg" },
+  { title: "Somaga forever 🎀",      date: "Always & Forever ✦", img: "memories/memory (9).jpg" },
+];
+
+const dataSets = { carousel: carouselData, film: filmData, polaroid: polaroidData };
+
+// ===== LIGHTBOX STATE =====
+let lbSource = 'carousel';
+let lbCurrent = 0;
+
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lbImg');
+const lbPh    = document.getElementById('lbPh');
+const lbTitle = document.getElementById('lbTitle');
+const lbDate  = document.getElementById('lbDate');
+
+function openLightbox(source, idx) {
+  lbSource  = source;
+  lbCurrent = idx;
+  renderLightbox();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderLightbox() {
+  const data = dataSets[lbSource];
+  const d = data[lbCurrent];
+  lbTitle.textContent = d.title;
+  lbDate.textContent  = d.date;
+  if (d.img) {
+    lbImg.src = d.img;
+    lbImg.style.display = 'block';
+    lbPh.style.display  = 'none';
+  } else {
+    lbImg.style.display = 'none';
+    lbPh.style.display  = 'flex';
+  }
+}
+
+function closeLightbox() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeLightboxOutside(e) {
+  if (e.target === lb) closeLightbox();
+}
+
+function lbNext() {
+  const len = dataSets[lbSource].length;
+  lbCurrent = (lbCurrent + 1) % len;
+  renderLightbox();
+}
+
+function lbPrev() {
+  const len = dataSets[lbSource].length;
+  lbCurrent = (lbCurrent - 1 + len) % len;
+  renderLightbox();
+}
+
+// Swipe on lightbox
+let lbStartX = 0;
+lb.addEventListener('touchstart', e => { lbStartX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => {
+  const diff = lbStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) diff > 0 ? lbNext() : lbPrev();
+});
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNext();
+  if (e.key === 'ArrowLeft')  lbPrev();
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+// ===== CAROUSEL LOGIC =====
+let currentSlide = 0;
+const track    = document.getElementById('carouselTrack');
+const outer    = document.getElementById('carouselOuter');
+const dotsWrap = document.getElementById('carouselDots');
+const cards    = track.querySelectorAll('.carousel-card');
+const total    = cards.length;
+
+cards.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.onclick = () => goToSlide(i);
+  dotsWrap.appendChild(d);
+});
+
+function getCardWidth() {
+  const style = window.getComputedStyle(track);
+  const gap = parseInt(style.gap) || 20;
+  return cards[0].offsetWidth + gap;
+}
+
+function goToSlide(idx) {
+  currentSlide = (idx + total) % total;
+  const offset = currentSlide * getCardWidth() - (outer.offsetWidth / 2 - cards[0].offsetWidth / 2);
+  track.style.transform = `translateX(-${Math.max(0, offset)}px)`;
+  dotsWrap.querySelectorAll('.dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+
+function carouselNext() { goToSlide(currentSlide + 1); }
+function carouselPrev() { goToSlide(currentSlide - 1); }
+
+let startX = 0, isDragging = false;
+outer.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+outer.addEventListener('mousedown',  e => { startX = e.clientX; isDragging = true; });
+outer.addEventListener('touchend', e => {
+  if (!isDragging) return;
+  const diff = startX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
+  isDragging = false;
+});
+outer.addEventListener('mouseup', e => {
+  if (!isDragging) return;
+  const diff = startX - e.clientX;
+  if (Math.abs(diff) > 40) diff > 0 ? carouselNext() : carouselPrev();
+  isDragging = false;
+});
+
+let autoTimer = setInterval(carouselNext, 4000);
+outer.addEventListener('touchstart', () => clearInterval(autoTimer), { passive: true });
+outer.addEventListener('mousedown',  () => clearInterval(autoTimer));
+
+// ===== HEART TOGGLE =====
+function toggleHeart(el) {
+  el.textContent = el.textContent === '🤍' ? '❤️' : '🤍';
+  el.style.transform = 'scale(1.4)';
+  setTimeout(() => el.style.transform = '', 300);
+}
+
+// ===== SCROLL REVEAL =====
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+}, { threshold: 0.2 });
+document.getElementById('memHeader') && revObs.observe(document.getElementById('memHeader'));
+
+// ===== ANIMATED COUNTERS =====
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-target]').forEach(el => {
+      const target = el.getAttribute('data-target');
+      if (isNaN(target)) return;
+      let count = 0;
+      const end = parseInt(target);
+      const step = Math.ceil(end / 60);
+      const timer = setInterval(() => {
+        count = Math.min(count + step, end);
+        el.textContent = count;
+        if (count >= end) clearInterval(timer);
+      }, 20);
+    });
+    cObs.unobserve(entry.target);
+  });
+}, { threshold: 0.5 });
+document.querySelector('.counter-strip') && cObs.observe(document.querySelector('.counter-strip'));
+</script>
+
+</body>
+</html>
