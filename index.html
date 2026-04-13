@@ -163,9 +163,19 @@
     animation: arrowBounce 1.5s ease-in-out infinite;
   }
 
+  .button-bounce {
+    /* transform: rotate(45deg); */
+    animation: buttonBounce 1.5s ease-in-out infinite;
+  }
+
   @keyframes arrowBounce {
     0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
     50% { transform: rotate(45deg) translateY(6px); opacity: 0.5; }
+  }
+
+  @keyframes buttonBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
   }
 
   /* ===== NAMES SECTION ===== */
@@ -631,7 +641,7 @@
     <h1 class="hero-name">Chisomaga</h1>
     <p class="hero-subtitle">Perpetual &nbsp;·&nbsp; Beloved &nbsp;·&nbsp; Cherished</p>
     <p class="hero-date">April 14th &nbsp;·&nbsp; A Day The World Became More Beautiful</p>
-    <a href="gallery.html" class="birthday-badge">✦ PLEASE CLICK ME ✦</a>
+    <a href="gallery.html" class="birthday-badge button-bounce">✦ PLEASE CLICK ME ✦</a>
     <div class="scroll-cta" onclick="document.getElementById('names').scrollIntoView({behavior:'smooth'})">
       <span>Open Your Heart</span>
       <div class="scroll-arrow"></div>
